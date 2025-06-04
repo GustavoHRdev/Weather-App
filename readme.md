@@ -50,6 +50,13 @@ Você pode digitar o nome de qualquer cidade e o app irá buscar informações c
 
 ---
 
+## 🌐 Acesse o App / Access the App
+
+➡️ [Clique aqui para ver o Weather App rodando no navegador](https://gustavohrdev.github.io/Weather-App/)  
+➡️ [Click here to see the Weather App running in your browser](https://gustavohrdev.github.io/Weather-App/)
+
+---
+
 ## 🚀 How to use
 
 ### 🇺🇸 English:
