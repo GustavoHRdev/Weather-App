@@ -224,11 +224,12 @@ body.dark-mode .search button img {
 }
 
 .col {
+  width: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .col img {
