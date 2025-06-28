@@ -10,7 +10,7 @@
 ---
 
 <p align="center">
-  <img src="./images/project-version-finish.png" alt="Weather App Screenshot" width="100%" />
+  <img src="./images/version-finish.png" alt="Weather App Screenshot" width="100%" />
 </p>
 
 ---
