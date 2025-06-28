@@ -133,6 +133,7 @@ body.dark-mode .dark-mode-btn {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  min-width: 0;
 }
 
 .search input {
@@ -145,6 +146,7 @@ body.dark-mode .dark-mode-btn {
   background: #ebfffc;
   color: #555;
   transition: box-shadow 0.3s;
+  min-width: 0;
 }
 
 .search input:focus {
@@ -329,12 +331,13 @@ body.dark-mode .search button img {
     width: 20px;
   }
 }
-@media screen and (max-width: 420px) and (min-width: 360px) {
+@@media screen and (max-width: 420px) and (min-width: 360px) {
   .search {
     width: 100%;
-    max-width: 400px; /* ou 100% */
+    max-width: 100%; /* evita ultrapassar container pai */
     margin: 0 auto;
     gap: 10px;
+    box-sizing: border-box;
   }
 
   .search input {
@@ -342,11 +345,14 @@ body.dark-mode .search button img {
     font-size: 18px;
     padding: 12px 18px;
     border-radius: 30px 0 0 30px;
+    min-width: 0; /* evita overflow */
   }
 
   .search button {
     width: 55px;
     height: 55px;
     border-radius: 0 30px 30px 0;
+    flex-shrink: 0; /* não deixa encolher */
   }
 }
+
