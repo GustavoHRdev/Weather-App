@@ -217,11 +217,10 @@ body.dark-mode .search button img {
 /* ========== DETALHES (UMIDADE E VENTO) ========== */
 .details {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
   flex-wrap: wrap;
-  margin-top: 30px;
-  text-align: center;
-  gap: 20px;
 }
 
 .col {
@@ -229,22 +228,32 @@ body.dark-mode .search button img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1 1 150px;
-  max-width: 200px;
+  width: 150px;
+  max-width: 45vw;
+  text-align: center;
 }
 
-.col img {
-  width: 40px;
-  margin-bottom: 5px;
+.info-icon {
+  font-size: 55px;
+  margin-bottom: 8px;
+  color: inherit;
 }
 
-.humidity,
-.wind {
-  font-size: 24px;
-  font-weight: 600;
+.col > div {
   margin-top: 5px;
 }
 
+.humidity, .wind {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+
+.col span.label {
+  font-size: 15px;
+  color: #444;
+}
 
 .col[title]:hover::after {
   content: attr(title);
@@ -260,13 +269,6 @@ body.dark-mode .search button img {
   font-size: 12px;
   z-index: 10;
 }
-
-.humidity, .wind {
-  font-size: 28px;
-  font-weight: 600;
-  transition: color 0.4s, opacity 0.5s;
-}
-
 /* ========== ERRO ========== */
 .error {
   text-align: left;
@@ -341,7 +343,7 @@ body.dark-mode .search button img {
     width: 20px;
   }
 }
-@@media screen and (max-width: 420px) and (min-width: 360px) {
+@media screen and (max-width: 420px) and (min-width: 360px) {
   .search {
     width: 100%;
     max-width: 100%; /* evita ultrapassar container pai */
