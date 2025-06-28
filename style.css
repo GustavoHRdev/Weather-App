@@ -1,50 +1,207 @@
-* {
+* { 
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
 
+/* Fundo padrão */
 body {
-  background: #1e1e1e;
-  color: white;
-  transition: background 0.3s ease, color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 20px;
+  background: #f5f7fa;
+  transition: background 1s ease;
 }
+
+/* Clear (céu limpo) */
+body.clear-morning {
+  background: linear-gradient(to top, #fceabb 0%, #f8b500 100%);
+}
+
+body.clear-afternoon {
+  background: linear-gradient(to top, #f7971e 0%, #ffd200 100%);
+}
+
+body.clear-evening {
+  background: linear-gradient(to top, #ee9ca7 0%, #ffdde1 100%);
+}
+
+body.clear-night {
+  background: linear-gradient(to top, #141e30 0%, #243b55 100%);
+  color: white;
+}
+
+/* Clouds */
+body.clouds-morning {
+  background: linear-gradient(to top, #d7d2cc 0%, #304352 100%);
+  color: #333;
+}
+
+body.clouds-afternoon {
+  background: linear-gradient(to top, #757f9a 0%, #d7dde8 100%);
+  color: #333;
+}
+
+body.clouds-evening {
+  background: linear-gradient(to top, #3a6186 0%, #89253e 100%);
+  color: white;
+}
+
+body.clouds-night {
+  background: linear-gradient(to top, #232526 0%, #1c1c1c 100%);
+  color: white;
+}
+
+/* Rain */
+body.rain-morning,
+body.rain-afternoon,
+body.rain-evening,
+body.rain-night {
+  background: linear-gradient(to top, #000046, #1cb5e0);
+  color: white;
+  overflow: hidden;
+}
+
+/* Snow */
+body.snow-morning,
+body.snow-afternoon,
+body.snow-evening,
+body.snow-night {
+  background: linear-gradient(to top, #83a4d4, #b6fbff);
+  color: #222;
+  overflow: hidden;
+}
+
+/* Flocos de neve simples */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  user-select: none;
+  z-index: 9999;
+  pointer-events: none;
+  font-size: 1.5rem;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Animação gotas de chuva */
+.rain-drop {
+  position: fixed;
+  width: 2px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation-name: rainFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rainFall {
+  0% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
 
 .card {
-  background: linear-gradient(135deg, #00feba, #5b548a);
-  transition: background 0.3s ease;
+  width: 90%;
+  max-width: 600px; /* maior que antes */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-radius: 20px;
+  padding: 50px 45px;
+  text-align: center;
+  color: #222;
+  transition: background 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(200,200,255,0.6));
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  margin: 0; /* porque o body já centraliza */
 }
 
-body.dark-mode {
-  background: #121212;
+@media screen and (max-width: 480px) {
+  .card {
+    max-width: 90vw;
+    width: 95%;
+    padding: 25px 20px;
+    margin: 0 auto;
+  }
 }
 
-body.dark-mode .card {
-  background: linear-gradient(135deg, #2a2a2a, #3d3d3d);
+/* Dark Mode */
+.card.dark-mode {
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  color: #eee;
 }
+
+.card.dark-mode .humidity,
+.card.dark-mode .wind {
+  color: #ddd;
+}
+
+/* Ajuste os ícones dentro do card no modo dark */
+.card.dark-mode .col img {
+  filter: invert(1);
+  filter: drop-shadow(0 0 0 transparent);
+}
+
 
 body.dark-mode .humidity,
 body.dark-mode .wind {
   color: #ddd;
 }
 
+/* No modo dark, mantém o invert e remove a sombra para não ficar exagerado */
+body.dark-mode .col img {
+  filter: invert(1);
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+/* Botão Dark Mode */
 .dark-mode-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: fixed;
+  top: 15px;
+  right: 15px;
   background-color: #ffffffcc;
   border: none;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  font-size: 24px;
+  font-size: 26px;
   cursor: pointer;
   box-shadow: 0 0 12px #00000044;
-  transition: background 0.4s, transform 0.2s;
+  transition: background 0.4s, transform 0.2s, color 0.4s;
   z-index: 1000;
   color: #333;
-  animation: pulse 2s infinite;
+  animation: pulse 2.5s infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dark-mode-btn:hover {
@@ -69,16 +226,7 @@ body.dark-mode .dark-mode-btn {
   }
 }
 
-.card {
-  width: 90%;
-  max-width: 470px;
-  color: #fff;
-  margin: 100px auto 0;
-  border-radius: 20px;
-  padding: 40px 35px;
-  text-align: center;
-}
-
+/* Search bar */
 .search {
   display: flex;
   align-items: center;
@@ -90,50 +238,77 @@ body.dark-mode .dark-mode-btn {
   outline: 0;
   background: #ebfffc;
   color: #555;
-  padding: 18px 25px;       /* Aumentei bastante o padding vertical */
-  height: auto;             /* Permite ajuste automático */
+  padding: 18px 25px;
+  height: auto;
   border-radius: 30px;
   flex: 1;
   margin-right: 16px;
   font-size: 18px;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  line-height: 1.5;         /* Espaço vertical maior para o texto */
+  line-height: 1.5;
   vertical-align: middle;
+  transition: box-shadow 0.3s ease;
 }
 
+.search input:focus {
+  box-shadow: 0 0 8px #00feba;
+}
 
-
+/* Search button */
 .search button {
   border: 0;
   outline: 0;
-  background: #ebfffc;
+  background: #00feba;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 254, 186, 0.6);
+}
+
+.search button:hover {
+  background: #00d4a8;
 }
 
 .search button img {
-  width: 16px;
+  width: 22px;
+  filter: invert(1);
+  transition: filter 0.3s ease;
 }
 
+body.dark-mode .search button img {
+  filter: invert(0);
+}
+
+/* Weather Icon */
 .weather-icon {
-  width: 170px;
-  margin-top: 30px;
+  font-size: 100px;
+  margin-top: 40px;
+  transition: transform 0.5s ease;
 }
 
+/* Headings */
 .weather h1 {
   font-size: 80px;
-  font-weight: 500;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 15px;
+  transition: color 0.4s ease;
 }
 
 .weather h2 {
   font-size: 45px;
   font-weight: 400;
   margin-top: -10px;
+  transition: color 0.4s ease;
 }
 
+/* Details Section */
 .details {
   display: flex;
   justify-content: space-between;
@@ -146,35 +321,129 @@ body.dark-mode .dark-mode-btn {
   align-items: center;
   gap: 10px;
   text-align: center;
+  cursor: default;
+  position: relative;
 }
 
+/* Ícones no modo claro com sombra para destacar */
 .col img {
-  width: 40px;
-  margin-right: 10px;
+  filter: invert(0);
+  filter: drop-shadow(5px 3px 3px rgba(0,0,0,0.3));
+  transition: filter 0.3s ease, drop-shadow 0.3s ease;
 }
 
+/* Tooltip */
+.col[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 10;
+}
+
+
+/* Texto das informações */
 .humidity, .wind {
   font-size: 28px;
   margin-top: -6px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.4s ease, opacity 0.5s ease;
+  color: #222; /* cor escura para modo claro */
 }
 
+/* Weather container hidden state for fade */
 .weather {
   display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  margin-top: 30px;
 }
 
+.weather.visible {
+  display: block;
+  opacity: 1;
+}
+
+.weather-icon.main-icon {
+  font-size: 150px; /* ou o tamanho que preferir */
+  margin-top: 30px;
+  transition: transform 0.5s ease;
+  color: inherit;
+}
+
+@media screen and (max-width: 480px) {
+  .weather-icon.main-icon {
+    font-size: 100px;
+  }
+}
+.weather.hidden {
+  opacity: 0;
+}
+
+@media screen and (max-width: 380px) {
+  .search {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .search input {
+    flex: 1; /* input ocupa o máximo possível */
+    font-size: 16px;
+    padding-top: 26px;
+    padding-bottom: 18px;
+    margin-right: 0;
+    border-radius: 30px 0 0 30px; /* borda arredondada só na esquerda */
+    background: linear-gradient(135deg, #e0f7fa, #80deea);
+    border: none;
+  }
+
+  .search button {
+    width: 50px;
+    height: 50px;
+    border-radius: 0 30px 30px 0; /* borda arredondada só na direita */
+  }
+
+  .search button img {
+    width: 20px;
+  }
+}
+
+
+/* Error message */
 .error {
   text-align: left;
   margin-left: 10px;
   font-size: 14px;
   margin-top: 10px;
+  color: #f44336;
   display: none;
 }
 
 /* Responsivo */
 @media screen and (max-width: 480px) {
+  body {
+    padding-top: 100px;
+  }
+
   .card {
     padding: 25px 20px;
     margin: 50px auto 0;
+    width: 95%;
+    
   }
 
   .weather h1 {
@@ -209,4 +478,19 @@ body.dark-mode .dark-mode-btn {
     width: 50px;
     height: 50px;
   }
+
+  /* Botão dark mode menor e afastado */
+  .dark-mode-btn {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+/* Ícones menores (umidade e vento) */
+.info-icon {
+  font-size: 36px;
+  color: inherit;
 }

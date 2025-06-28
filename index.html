@@ -5,43 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Weather App</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
 </head>
 <body>
-  <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+  <button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle dark mode">🌙</button>
 
-  <div class="card">
+  <main class="card">
     <div class="search">
-      <input type="text" placeholder="Enter city name" spellcheck="false" />
-      <button><img src="images/search.png" alt="search icon" /></button>
+      <input type="text" placeholder="Enter city name" spellcheck="false" aria-label="Enter city name" />
+      <button type="button" aria-label="Search city">
+        <img src="images/search.png" alt="search icon" />
+      </button>
     </div>
 
     <div class="error">
       <p>Invalid city name</p>
     </div>
 
-    <div class="weather">
-      <img src="images/rain.png" class="weather-icon" />
-      <h1 class="temp">22°c</h1>
-      <h2 class="city">New York</h2>
+    <section class="weather">
+      <!-- Ícone do clima -->
+      <i id="weatherIcon" class="wi wi-day-sunny weather-icon main-icon"></i>
 
+      <!-- Dados principais -->
+      <h1 class="temp"></h1>
+      <h2 class="city"></h2>
+
+      <!-- Informações extras -->
       <div class="details">
         <div class="col">
-          <img src="images/humidity.png" />
+          <i class="wi wi-humidity info-icon"></i>
           <div>
-            <p class="humidity">50%</p>
+            <p class="humidity"></p>
             <p>Humidity</p>
           </div>
         </div>
         <div class="col">
-          <img src="images/wind.png" />
+          <i class="wi wi-strong-wind info-icon"></i>
           <div>
-            <p class="wind">15 km/h</p>
+            <p class="wind"></p>
             <p>Wind Speed</p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
