@@ -231,12 +231,13 @@ body.dark-mode .search button img {
   width: 150px;
   max-width: 45vw;
   text-align: center;
+  color: inherit; /* garante que herda a cor do contexto (dark/light) */
 }
 
 .info-icon {
   font-size: 55px;
   margin-bottom: 8px;
-  color: inherit;
+  color: inherit; /* herda a cor do .col para ficar igual ao texto */
 }
 
 .col > div {
@@ -247,8 +248,19 @@ body.dark-mode .search button img {
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 4px;
+  line-height: 1.2;
 }
 
+.col p {
+  margin: 0;
+  color: inherit;
+}
+
+.col p + p {
+  margin-top: 4px;
+  font-size: 16px;
+  color: inherit;
+}
 
 .col span.label {
   font-size: 15px;
@@ -269,6 +281,7 @@ body.dark-mode .search button img {
   font-size: 12px;
   z-index: 10;
 }
+
 /* ========== ERRO ========== */
 .error {
   text-align: left;
@@ -367,4 +380,3 @@ body.dark-mode .search button img {
     flex-shrink: 0; /* não deixa encolher */
   }
 }
-
