@@ -387,3 +387,31 @@ body.dark-mode .search button img {
     flex-shrink: 0; /* não deixa encolher */
   }
 }
+/* Ajustes específicos para telas entre 350px e 380px (ex: Samsung A34) */
+@media screen and (max-width: 380px) and (min-width: 350px) {
+  .details {
+    gap: 10px;           /* reduz espaço para caber melhor */
+  }
+
+  .col {
+    width: 120px;        /* um pouco menor para se adequar à tela */
+  }
+
+  .humidity,
+  .wind {
+    font-size: 24px;     /* ajusta tamanho da fonte para melhor legibilidade */
+  }
+
+  .info-icon {
+    font-size: 45px;     /* ícones menores para um layout mais compacto */
+  }
+
+  .weather h1 {
+    font-size: 45px;
+  }
+
+  .weather h2 {
+    font-size: 28px;
+  }
+}
+
