@@ -310,9 +310,16 @@ body.dark-mode .search button img {
     font-size: 30px;
   }
 
+  /* Mantém umidade e vento lado a lado e centralizados */
   .details {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row; /* mantém lado a lado */
+    justify-content: center; /* centraliza o grupo */
+    gap: 20px; /* espaço entre os itens */
+  }
+
+  .col {
+    width: 140px; /* mantém tamanho razoável */
+    max-width: none; /* remove restrição */
   }
 
   .weather-icon {
